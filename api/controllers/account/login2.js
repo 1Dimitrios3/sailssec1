@@ -8,25 +8,19 @@ module.exports = {
     exits: {
         success: {
             viewTemplatePath: 'unregistered/login'
-        }
+        },
+        
     },
 
     fn: async function(inputs) {
         console.log(this.req.session);
         let session = this.req.session;
         console.log(this.req.method);
-        // let userId = req.session.userId;
-        // if(session && userId) {
-        //     // return res.redirect('/registered/registered');
-        //     return {}
-        // } else {
-        //     // return {}
-        //     return res.redirect('/registered/registered');
-        // }
+      
         // here we return the login form
         if(this.req.method == 'GET' && this.req.session == undefined) {
             return {}
-
+            // return this.res.view('unregistered/login')
         } 
         // here we answer to the form post request
         if(this.req.method == 'POST') {
@@ -35,19 +29,27 @@ module.exports = {
             // the keys here need to match the User model attribute names e.g username as emailAddress 
             emailAddress: inputs.username, 
             });
-            let match = false;
+            if(!user) {
+                // return this.res.redirect('/login');
+                 return this.res.badRequest('Please try again!')
+                
+            } else {
+                let match = false;
+            console.log(user.password)
             match = await bcrypt.compare(inputs.password, user.password)
 
-             if(match) {
+               if(match) {
             // this.req.me = user;
             this.req.session.userId = user.id;
             console.log(this.req.session);
             // console.log(this.req)
-            return this.res.view('account/controlpanel')
+            return this.res.redirect('/controlpanel')
         }   else {
             this.res.statusCode = 403
             return this.res.forbidden();
         }
+            }
+          
         }
         // here we answer to the already logged in user
         if(this.req.session.userId !== undefined && this.req.method !== 'POST') {

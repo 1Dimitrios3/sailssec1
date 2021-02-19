@@ -21,12 +21,12 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
   '/signup':  { action: 'account/signup' },
-  '/login': {action: 'account/login2'},
-  // 'GET /login': {view: 'unregistered/login'},
-  'POST /login': {action: 'account/login2'},
   'POST /signup':   { action: 'account/signup2' },
+  '/login': {action: 'account/login2'},
+  'POST /login': {action: 'account/login2'},
   '/controlpanel': {action: 'account/controlpanel'},
    '/logout': {action: 'account/logout'}
+   // 'GET /login': {view: 'unregistered/login'},
   
 
 

@@ -1,5 +1,5 @@
 module.exports = async function (req, res, proceed) {
-    console.log("loged out")
+    console.log("logged out")
     if (req.session.userId !== undefined) {
         return proceed();
     }

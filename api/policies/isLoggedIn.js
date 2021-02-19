@@ -3,7 +3,7 @@ module.exports = async function(req, res, proceed) {
     console.log(req.session);
     if(req.session.userId !== undefined) {
         console.log(req.session.userId);
-        return res.redirect('registered/registered')
+        return proceed();
     }
     // alternative approach
     res.statusCode = 498;
