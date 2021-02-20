@@ -7,7 +7,8 @@ module.exports = async function(req, res, proceed) {
     }
     // alternative approach
     res.statusCode = 498;
-    return res.view("pages/homepage", {data: "forbidden"})
+    return res.view("pages/homepage", {data: "You need to be logged in in order to visit this page: "})
+    // return res.redirect('/login');
     // return res.forbidden();
 } 
 

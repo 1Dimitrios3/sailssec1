@@ -31,7 +31,8 @@ module.exports = {
             });
             if(!user) {
                 // return this.res.redirect('/login');
-                 return this.res.badRequest('Please try again!')
+                return this.res.view('unregistered/notfound', {data: 'Username or Password not found. Please try again!'})
+                //  return this.res.badRequest('Please try again!') // fix this with a view res.view + data to a new view
                 
             } else {
                 let match = false;
@@ -46,7 +47,8 @@ module.exports = {
             return this.res.redirect('/controlpanel')
         }   else {
             this.res.statusCode = 403
-            return this.res.forbidden();
+            return this.res.view('unregistered/notfound', {data: 'Username or Password not found. Please try again!'})
+            // return this.res.forbidden(); // respond with not matching username / password
         }
             }
           

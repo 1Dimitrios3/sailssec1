@@ -55,7 +55,12 @@ email status until they click the link in the confirmation email.`
       maxLength: 120,
       example: 'Mary Sue van der McHenst'
     },
-
+    token: {
+      type: 'string'
+    },
+    resetTokenExpiration: {
+    type: 'string'
+    },
     isSuperAdmin: {
       type: 'boolean',
       description: 'Whether this user is a "super admin" with extra permissions, etc.',

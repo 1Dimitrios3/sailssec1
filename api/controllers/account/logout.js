@@ -6,7 +6,11 @@ module.exports={
     },
     fn: async function(){
        console.log(this.req.session)
-       delete this.req.session.userId
+       if(this.req.session.userId !== undefined) {
+           this.req.session.destroy()
+           return this.res.redirect('/')
+       }
+       // delete this.req.session.userId
        console.log(this.req.session.userId)
 
         return this.res.redirect('/')

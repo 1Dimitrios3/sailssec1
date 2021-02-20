@@ -20,6 +20,7 @@ module.exports.policies = {
   // '*': true,
   // 'account/controlpanel': 'isLoggedIn',
   // 'account/login': 'loginTrue'
-  'account/logout': 'logout'
+  'account/logout': 'logout',
+  'entrance/newpage': 'isLoggedIn'
 
 };
