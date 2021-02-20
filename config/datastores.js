@@ -33,7 +33,7 @@ module.exports.datastores = {
   ***************************************************************************/
 
   default: {
-    
+   
 
     // adapter: require('sails-mysql'),
     // url: 'mysql://cb12ptjs:cb12ptjs@localhost:3306/sailssec'
